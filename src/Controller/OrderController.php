@@ -80,6 +80,11 @@ class OrderController extends AbstractController
             return new JsonResponse(['status' => 'Order bulunamadı.'], Response::HTTP_NOT_FOUND);
         }
 
+        $shippingDate = $order->getShippingDate();
+        if($shippingDate){
+            return new JsonResponse(['status' => "Bu sipariş için daha önce 'shippingDate' bilgisi girilmiş."], Response::HTTP_NOT_FOUND);
+        }
+
         $data = json_decode($request->getContent(), true);
 
         empty($data['shippingDate']) ? true : $order->setShippingDate(new \DateTime('@'.strtotime($data['shippingDate'])));

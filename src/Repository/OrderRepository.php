@@ -62,7 +62,7 @@ class OrderRepository extends ServiceEntityRepository
             ->setAddress($data['address'])
             ->setCreatedBy($data['createdBy']);
 
-        if (array_key_exists('shippingDate',$data)) {
+        if ($data['shippingDate']) {
             $order->setShippingDate(new \DateTime('@'.strtotime($data['shippingDate'])));
         }
 
