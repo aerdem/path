@@ -1,20 +1,17 @@
 PathCase Symfony Restful Application
 ====================================
-
-The "PathCase Symfony Restful Application" is case application.
-
+The "PathCase Symfony Restful Application" is a case application.
 
 Requirements
 ------------
-
-* PHP 8.1.0 or higher;
+* PHP 8.0 or higher;
 * and the [usual Symfony application requirements][1].
 
 Installation
 ------------
-
 [Download Symfony][2] to install the `symfony` binary on your computer.
 
+And run following codes;
 ```bash
  git clone https://github.com/aerdem/path.git   
  cd path
@@ -25,22 +22,15 @@ Installation
  php bin/console lexik:jwt:generate-keypair
  symfony server:start
 ```
-
-Visit
------
-
-view symfony server:start terminal output and visit server listenin address
-
+Output;
 ```bash
 [OK] Web server listening                                                                                              
 The Web server is using PHP FPM 8.1.7                                                                             
 http://127.0.0.1:8000
 ```
 
-Api Test 
+Api Methods 
 --------
-
-Methods
 * /register - Add a new user
 * /auth/token - Get access token with username and password
 * /order/add - Add a new order
