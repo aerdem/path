@@ -11,16 +11,15 @@ Installation
 ------------
 [Download Symfony][2] to install the `symfony` binary on your computer.
 
-And run following codes;
+And run following commands;
 ```bash
- git clone https://github.com/aerdem/path.git   
- cd path
- composer install
- php bin/console doctrine:database:create
- php bin/console make:migration
- php bin/console doctrine:schema:update --force
- php bin/console lexik:jwt:generate-keypair
- symfony server:start
+git clone https://github.com/aerdem/path.git
+cd path
+composer install
+php bin/console doctrine:database:create
+php bin/console make:migration
+php bin/console doctrine:schema:update --force
+php bin/console lexik:jwt:generate-keypair
 ```
 Output;
 ```bash
@@ -31,7 +30,7 @@ http://127.0.0.1:8000
 
 Create Dummy Data
 -----------------
-Run for 3 user and 10 order related with users.
+Run following command for 3 user and 10 order related with users.
 ```
 php bin/console doctrine:fixtures:load
 ```
@@ -68,7 +67,13 @@ Array
 )
 > loading App\DataFixtures\OrderFixtures
 ```
-You can use any user data without create new user. 
+You can use any dummy user data what you created or you can create a new user with 'register' api method.
+Start Server
+------------
+Run following command
+```
+symfony server:start
+```
 
 Api Methods 
 --------
