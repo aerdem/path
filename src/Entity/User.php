@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @method string getUserIdentifier()
  */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User implements UserInterface
+class User implements UserInterface, \Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

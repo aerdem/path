@@ -6,3 +6,7 @@ register:
 api_login_check:
   path: /api/login_check
   controller: App\Controller\AuthController::getTokenUser
+
+user_list:
+  path: /user_list
+  controller: App\Controller\AuthController::userList

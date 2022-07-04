@@ -54,12 +54,10 @@ class OrderController extends AbstractController
                 'shippingDate' => array("required" => false),
             );
 
-
             foreach ($fields as $key => $field) {
                 if(!array_key_exists($key,$data)){
                     throw new \Exception("Eksik parametre => '$key'", Response::HTTP_BAD_REQUEST);
                 }
-
                 if($field['required'] && !$data[$key]){
                     throw new \Exception("Zorunlu alanlar girilmelidir => '$key'", Response::HTTP_BAD_REQUEST);
                 }
@@ -95,12 +93,6 @@ class OrderController extends AbstractController
     {
         $order = $this->orderRepository->findOneBy(['id' => $id, 'createdBy' => $this->userId]);
 
-//        echo "<pre>";
-//        print_r($id);
-//        print_r($order);
-//        echo "asd";
-//        exit;
-
         if (empty($order)) {
             return new JsonResponse(['status' => 'Order bulunamadı.'], Response::HTTP_NOT_FOUND);
         }
@@ -118,10 +110,9 @@ class OrderController extends AbstractController
     #[Route('/api/orders', name: 'get_orders', methods: ['GET'])]
     public function getAll(): JsonResponse
     {
-        $orders = $this->orderRepository->findBy(['createdBy' => $this->userId],null,1);
+        $orders = $this->orderRepository->findBy(['createdBy' => $this->userId], ['id'=>'DESC']);
 
         $data = [];
-
         foreach ($orders as $order) {
             $data[] = [
                 'id' => $order->getId(),

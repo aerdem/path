@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * @extends ServiceEntityRepository<User>
@@ -19,7 +19,7 @@ class UserRepository extends ServiceEntityRepository
 {
     private $encoder;
 
-    public function __construct(ManagerRegistry $registry, UserPasswordEncoderInterface $encoder)
+    public function __construct(ManagerRegistry $registry, UserPasswordHasherInterface $encoder)
     {
         parent::__construct($registry, User::class);
         $this->encoder = $encoder;
@@ -51,7 +51,7 @@ class UserRepository extends ServiceEntityRepository
             ->setFirstName($firstName)
             ->setLastName($lastName)
             ->setUsername($username)
-            ->setPassword($this->encoder->encodePassword($user, $password));
+            ->setPassword($this->encoder->hashPassword($user, $password));
 
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();

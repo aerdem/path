@@ -8,6 +8,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class AuthController extends AbstractController
@@ -48,5 +49,20 @@ class AuthController extends AbstractController
         return new JsonResponse([
             'token' => $JWTManager->create($user)
         ]);
+    }
+
+    public function userList(): JsonResponse
+    {
+        $users = $this->userRepository->findAll();
+        $data = [];
+        foreach ($users as $user) {
+            $data[] = [
+                'username' => $user->getUsername(),
+                'firstname' => $user->getFirstName(),
+                'lastname' => $user->getLastName()
+            ];
+        }
+
+        return new JsonResponse($data, Response::HTTP_OK);
     }
 }
