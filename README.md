@@ -68,6 +68,7 @@ Array
 > loading App\DataFixtures\OrderFixtures
 ```
 You can use any dummy user data what you created or you can create a new user with 'register' api method.
+
 Start Server
 ------------
 Run following command
