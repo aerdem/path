@@ -30,7 +30,7 @@ http://127.0.0.1:8000
 
 Create Dummy Data
 -----------------
-Run following command for 3 user and 10 order related with users.
+Run following command for 3 users and 10 orders related with users.
 ```
 php bin/console doctrine:fixtures:load
 ```
@@ -67,7 +67,7 @@ Array
 )
 > loading App\DataFixtures\OrderFixtures
 ```
-You can use any dummy user data what you created or you can create a new user with 'register' api method.
+You can use any dummy user data that you created or you can create a new user with 'register' api method.
 
 Start Server
 ------------
@@ -85,7 +85,7 @@ Public:
 
 With JWT Token
 * /order/add - Add a new order
-* /order/update/{id} - Update a order with order id - Only use with JWTOnly use with JWT
+* /order/update/{id} - Update a order with order id
 * /orders - Get all order records
 * /orders/{id} - Get a record detail with order id
 
